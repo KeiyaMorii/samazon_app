@@ -19,6 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/samazon.css') }}" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/36f0723af5.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app">
@@ -73,7 +75,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 mb-5">
             @yield('content')
         </main>
     </div>
