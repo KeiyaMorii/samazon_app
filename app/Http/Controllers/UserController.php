@@ -59,4 +59,25 @@ class UserController extends Controller
 
         return view('users.edit_address', compact('user'));
     }
+
+    public function edit_password()
+    {
+        # パスワード変更画面の表示
+        return view('users.edit_password');
+    }
+
+    public function update_password(Request $request)
+    {
+        $user = Auth::user();
+
+        # リクエスト内のpasswordとconfirm_passwordが同一のものかどうかを確認する
+        if ($request->input('password') == $request->input('confirm_password')) {
+            $user->password = bcrypt($request->input('password'));
+            $user->update();
+        } else {
+            return redirect()->route('mypage.edit_password');
+        }
+
+        return redirect()->route('mypage');
+    }
 }
