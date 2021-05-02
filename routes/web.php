@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+# カートの中身を確認するページへのURL
+Route::get('users/carts', 'CartController@index')->name('carts.index');
+
+Route::post('users/carts', 'CartController@store')->name('carts.store');
+
 Route::get('users/mypage', 'UserController@mypage')->name('mypage');
 Route::get('users/mypage/edit', 'UserController@edit')->name('mypage.edit');
 Route::get('users/mypage/address/edit', 'UserController@edit_address')->name('mypage.edit_address');

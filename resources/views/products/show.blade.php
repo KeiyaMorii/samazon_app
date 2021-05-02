@@ -22,7 +22,7 @@
                 <hr>
             </div>
             @auth
-            <form method="POST" class="m-3 align-items-end">
+            <form method="POST" action="{{ route('carts.store') }}" class="m-3 align-items-end">
                 {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{$product->id}}">
                 <input type="hidden" name="name" value="{{$product->name}}">
