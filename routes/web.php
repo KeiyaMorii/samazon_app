@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WebController@index');
 
 # カートの中身を確認するページへのURL
 Route::get('users/carts', 'CartController@index')->name('carts.index');
