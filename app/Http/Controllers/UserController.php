@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -79,5 +80,15 @@ class UserController extends Controller
         }
 
         return redirect()->route('mypage');
+    }
+
+    public function favorite()
+    {
+        $user = Auth::user();
+
+        # ユーザーがお気に入りした商品を全て$favoritesへと保存する
+        $favorites = $user->favorites(Product::class)->get();
+
+        return view('users.favorite', compact('favorites'));
     }
 }
