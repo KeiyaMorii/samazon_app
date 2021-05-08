@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Product;
 
 class WebController extends Controller
 {
@@ -13,6 +14,8 @@ class WebController extends Controller
 
         $major_category_names = Category::pluck('major_category_name')->unique();
 
-        return view('web.index', compact('major_category_names', 'categories'));
+        $recently_products = Product::orderBy('created_at', 'desc')->take(4)->get();
+
+        return view('web.index', compact('major_category_names', 'categories', 'recently_products'));
     }
 }

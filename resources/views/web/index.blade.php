@@ -54,61 +54,21 @@
 
         <h1>新着商品</h1>
         <div class="row">
-            <div class="col-3">
-                <a href="#">
-                    <img src="{{ asset('img/panasonic.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            掃除機本体 Panasonic<br>
-                            <label>￥15000</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <a href="#">
-                    <img src="{{ asset('img/sofa.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            3人掛けソファー ブラウン<br>
-                            <label>￥35000</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <a href="#">
-                    <img src="{{ asset('img/item.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            柔軟剤 詰め替え 2L<br>
-                            <label>￥1000</labiel>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <a href="#">
-                    <img src="{{ asset('img/goods.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            食器 カトラリーセット1組<br>
-                            <label>￥2000</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        @foreach ($recently_products as $recently_product)
+           <div class="col-3">
+               <a href="/products/{{ $recently_product->id }}">
+                   <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+               </a>
+               <div class="row">
+                   <div class="col-12">
+                       <p class="samazon-product-label mt-2">
+                           {{ $recently_product->name }}<br>
+                           <label>￥{{ $recently_product->price }}</label>
+                       </p>
+                   </div>
+               </div>
+           </div>
+        @endforeach
         </div>
     </div>
 </div>
