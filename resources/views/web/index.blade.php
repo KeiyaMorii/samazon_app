@@ -9,48 +9,22 @@
     <div class="col-9">
         <h1>おすすめ商品</h1>
         <div class="row">
-            <div class="col-4">
-                <a href="#">
-                    <img src="{{ asset('img/orange.png') }}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            旬のオレンジ詰め合わせ<br>
-                            <label>￥2000</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <a href="#">
-                    <img src="{{ asset('img/pan.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            フライパン20cm 鉄製 業務用<br>
-                            <label>￥5000</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <a href="#">
-                    <img src="{{ asset('img/meat.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            和牛ロース200g 2枚入り<br>
-                            <label>￥8200</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+           @foreach ($recommend_products as $recommend_product)
+           <div class="col-4">
+               <a href="/products/{{ $recommend_product->id }}">
+                   <img src="{{ asset('img/orange.png') }}" class="img-thumbnail">
+               </a>
+               <div class="row">
+                   <div class="col-12">
+                       <p class="samazon-product-label mt-2">
+                           {{ $recommend_product->name }}<br>
+                           <label>￥{{ $recommend_product->price }}</label>
+                       </p>
+                   </div>
+               </div>
+           </div>
+           @endforeach
+       </div>
 
         <h1>新着商品</h1>
         <div class="row">
