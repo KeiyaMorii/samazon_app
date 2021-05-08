@@ -52,29 +52,31 @@
                 @foreach($products as $product)
                 <tr>
                     <th scope="row">{{ $product->id }}</td>
-                    <td><img src="{{ asset('img/dummy.png')}}" class="img-fluid h-10"></td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->category["name"] }}</td>
-                    <td>{{ $product->category["major_category_name"] }}</td>
                     <td>
-                        <a href="/dashboard/products/{{ $product->id }}/edit" class="dashboard-edit-link">編集</a>
+                    @if ($product->image !== "")
+                    <img src="{{ asset('storage/products/'.$product->image) }}" class="h-10 img-fluid">
+                    @else
+                    <img src="{{ asset('img/dummy.png')}}" class="h-10 img-fuild">
+                    @endif
                     </td>
-                    <td>
-                        <a href="/dashboard/products/{{ $product->id }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dashboard-delete-link">
-                            削除
-                        </a>
-
-                        <form id="logout-form" action="/dashboard/products/{{ $product->id }}" method="POST" style="display: none;">
-                            @csrf
-                            <input type="hidden" name="_method" value="DELETE">
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                <td class="align-middle">{{ $product->name }}</td>
+                <td class="align-middle">{{ $product->price }}</td>
+                <td class="align-middle">{{ $product->category["name"] }}</td>
+                <td class="align-middle">{{ $product->category["major_category_name"] }}</td>
+                <td class="align-middle">
+                    <a href="/dashboard/products/{{ $product->id }}/edit" class="dashboard-edit-link">編集</a>
+                </td>
+                <td class="align-middle">
+                    <form action="/dashboard/products/{{ $product->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn dashboard-delete-link">削除</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
     {{ $products->links() }}
 </div>
